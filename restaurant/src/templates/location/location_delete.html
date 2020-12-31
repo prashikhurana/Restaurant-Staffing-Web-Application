@@ -1,0 +1,31 @@
+  {% extends 'base.html' %}
+
+{% block content %}
+
+
+<!-- <form action='.' method='POST'>{% csrf_token %}
+    <h1>Do you want to delete the product "{{ object.title }}"?</h1>
+    <p><input type='submit' value='Yes' />  <a href='../'>Cancel</a></p>
+
+</form> -->
+
+
+<h1>Delete Locations</h1>
+
+<body>
+	<table width="500">
+		<tr>
+			<th>Name</th>
+			<th>Location Id</th>
+		</tr>
+		{% for loc in locations %}
+		<tr>
+			<td>{{loc.name}}</td>
+			<td>{{loc.locationId}}</td>
+			<td><a href="{% url 'locationDeleteWithId' loc.pk%}">Delete</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</body>
+
+{% endblock %}

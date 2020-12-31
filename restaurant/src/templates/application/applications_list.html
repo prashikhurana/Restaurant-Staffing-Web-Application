@@ -1,0 +1,51 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<h1>All Applications</h1>
+
+<body>
+	<table width="700">
+		<tr>
+			<th>Application</th>
+			<th>Job</th>
+			<th>Location</th>
+			<th>Email</th>
+			<th>Resume</th>
+			{% if user.usertype == 3 %}
+				<th>Delete</th>
+				<th>Update</th>
+			{% endif %}
+			{% if user.usertype == 2 %}
+				<th>Approved</th>
+				<th>Declined</th>
+			{% endif %}
+		</tr>
+		{% for application in all_applications %}
+		<tr>
+			<td>{{application.applicationId}}</td>
+			<td>{{application.job.name}}</td>
+			<td>{{application.job.restaurant_location}}</td>
+			<td>{{application.user.email}}</td>
+			<td>{{application.resume}}</td>
+			{% if application.approved == 'Pending' and user.usertype == 3 %}
+			<td><a href="{% url 'applicationDeleteWithId' application.pk%}">Delete</a></td>
+			<td><a href="{% url 'applicationUpdateWithId' application.pk%}">Update</a></td>
+			{% endif %}
+			{% if application.approved == 'Pending' and user.usertype == 2 %}
+			<td><a href="{% url 'email1' application.job.name application.user.email application.pk 'Approved'%}">Approve</a></td>
+			<td><a href="{% url 'email1' application.job.name application.user.email application.pk 'Rejected'%}">Reject</a></td>
+			{% endif %}
+			{% if application.approved == 'Approved' %}
+				<td>Approved</td>
+				<td></td>
+			{% endif %}
+			{% if application.approved == 'Rejected' %}
+				<td></td>
+				<td>Rejected</td>
+			{% endif %}
+		</tr>
+		{% endfor %}
+	</table>
+</body>
+
+{% endblock %}

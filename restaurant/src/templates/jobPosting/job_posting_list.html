@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<h1>All Job Posting</h1>
+
+<body>
+	{{error_message}}
+	<table width="500">
+		<tr>
+			<th>Name</th>
+			<th>Job Posting Id</th>
+			<th>Restaurant Location</th>
+			{% if user.usertype == 0 or user.usertype == 1 %}
+			<th>Delete</th>
+			<th>Update</th>
+			{% endif %}
+		</tr>
+		{% for job in all_job_postings %}
+		<tr>
+			<td>{{job.name}}</td>
+			<td>{{job.jobId}}</td>
+			<td>{{job.restaurant_location}}</td>
+			{% if user.usertype == 0 or user.usertype == 1 %}
+			<td><a href="{% url 'jobPostingDeleteWithId' job.pk%}">Delete</a></td>
+			<td><a href="{% url 'jobPostingUpdateWithId' job.pk%}">Update</a></td>
+			{% endif %}
+		</tr>
+		{% endfor %}
+	</table>
+</body>
+
+<!-- {{request.user}}
+{{request.user.is_authenticated}}
+ -->
+ {% endblock %}

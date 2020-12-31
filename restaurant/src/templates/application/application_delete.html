@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>All Applications Delete</h1>
+
+<body>
+	<table width="500">
+		<tr>
+			<th>Name</th>
+			<th>Delete</th>
+		</tr>
+		{% for app in all_applications %}
+		<tr>
+			<td>{{app.applicationId}}</td>
+			<td><a href="{% url 'applicationDeleteWithId' app.pk%}">Delete</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</body>
+
+{% endblock %}

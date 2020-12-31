@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<h1>All Restaurants</h1>
+
+<body>
+	<table width="500">
+		<tr>
+			<th>id</th>
+			<th>Name</th>
+			<th>User</th>
+		</tr>
+		{% for restaurant in all_restaruant %}
+		<tr>
+			<td>{{restaurant.restaurantId}}</td>
+			<td>{{restaurant.name}}</td>
+			<td>{{restaurant.administrator}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</body>
+{% endblock %}

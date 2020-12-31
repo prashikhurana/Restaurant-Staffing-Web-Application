@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+   <h2></h2>
+    User Name: {{ user.username }}
+    <br>
+    First Name: {{user.first_name}}
+    <br>
+    Email: {{user.email}}
+    <br>
+    Role :
+    {% if user.usertype == 1 %}
+        Restaurant Administrators
+    {% endif %}
+            {% if user.usertype == 2 %}
+                Hiring Managers
+            {% endif %}
+            {% if user.usertype == 3 %}
+                Applicants
+            {% endif %}
+            {% if user.usertype == 0 %}
+                Overall Admin
+            {% endif %}
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<h1>All Locations</h1>
+
+<body>
+	{{error_message}}
+	<table width="500">
+		<tr>
+			<th>Name</th>
+			<th>Location Id</th>
+			<th>Delete</th>
+			<th>Update</th>
+		</tr>
+		{% for loc in locations %}
+		<tr>
+			<td>{{loc.name}}</td>
+			<td>{{loc.locationId}}</td>
+			<td><a href="{% url 'locationDeleteWithId' loc.pk%}">Delete</a></td>
+			<td><a href="{% url 'locationUpdateWithId' loc.pk%}">Update</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</body>
+
+<!-- {{request.user}}
+{{request.user.is_authenticated}}
+ -->
+ {% endblock %}
