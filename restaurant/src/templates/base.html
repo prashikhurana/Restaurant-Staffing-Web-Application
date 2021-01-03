@@ -113,7 +113,9 @@
 	        		{% if user.usertype == 1 or user.usertype == 0%}
 	        		<li>Restaurant Locations
 	        			<li><a href="{% url 'restaurantLocationList' %}">List Restaurant Locations</a></li>
+	        			{% if user.usertype != 0%}
 	        			<li><a href="{% url 'restaurantLocationCreate' %}">Create Restaurant Locations</a></li>
+	        			{% endif %}	
 	        		</li>
 					{% endif %}
 	        		

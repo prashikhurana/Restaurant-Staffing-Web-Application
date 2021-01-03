@@ -4,13 +4,20 @@
 <h1>All Lists</h1>
 
 <body>
-	<table width="500">
+	<table width="700">
+		<tr>
+			<th>Id</th>
+			<th>Job Name</th>
+			<th>Name</th>
+			<th>Resume</th>
+			<th>Status</th>	
+		</tr>
 		<tr><b>All Application</b>
 			{% for app in all_applications %}
 			<tr>
 				<td>{{app.applicationId}}</td>
 				<td>{{app.job.name}}</td>
-				<td>{{app.user.name}}</td>
+				<td>{{app.user.username}}</td>
 				<td>{{app.resume}}</td>
 				<td>{{app.approved}}</td>
 			</tr>
@@ -18,7 +25,13 @@
 		</tr>
 	</table>
 	<br>
-	<table width="500">		
+	<table width="700">
+		<tr>
+			<th>Username</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+		</tr>		
 		<tr><b>Users</b>
 			{% for user in all_users %}
 			<tr>
@@ -31,7 +44,14 @@
 		</tr>
 	</table>
 	<br>
-	<table width="500">
+	<table width="700">
+		<tr>
+			<th>Job Id</th>
+			<th>Name</th>
+			<th>Location Name</th>
+			<th>Restaurant Name</th>
+			<th>Hiring Manager</th>
+		</tr>	
 		<tr><b>JobPostings</b>
 			{% for job in all_jobPostings %}
 			<tr>
@@ -45,11 +65,16 @@
 		</tr>
 	</table>
 	<br>
-	<table width="500">
+	<table width="700">
+		<tr>
+			<th>Restaurant Id</th>
+			<th>Name</th>
+			<th>Administrator</th>
+		</tr>	
 		<tr><b>Restaurants</b>
 			{% for restaurant in all_restaruant %}
 			<tr>
-				<td>{{restaurant.restaurnatId}}</td>
+				<td>{{restaurant.restaurantId}}</td>
 				<td>{{restaurant.name}}</td>
 				<td>{{restaurant.administrator}}</td>
 			</tr>
@@ -57,7 +82,12 @@
 		</tr>
 	</table>
 	<br>
-	<table width="500">
+	<table width="700">
+		<tr>
+			<th>Name</th>
+			<th>Restaurant Name</th>
+			<th>Hiring Manager</th>
+		</tr>	
 		<tr><b>Restaurant Locations</b>
 			{% for loc in all_restaruant_location %}
 			<tr>
@@ -69,7 +99,11 @@
 		</tr>
 	</table>
 	<br>
-	<table width="500">
+	<table width="700">
+		<tr>
+			<th>Name</th>
+			<th>Location Id</th>
+		</tr>
 		<tr><b>All Locations</b>
 			{% for loc in all_locations %}
 			<tr>
